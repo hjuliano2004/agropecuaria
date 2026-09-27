@@ -1,48 +1,71 @@
+import { save } from "../models/racoes.js";
 import { adotar, dom } from "./adotar.js";
 import { formatCoins } from "./utils.js";
 
 
-export function lista(list){//gera a lista de ração
-    const ul = dom("ul");
+export function itemLista(obj) {//gera a lista de ração
 
-    for(let i = 0; i<list.length;i++){
+    const li = dom("li", "", { class: "lista-racao" });
 
-        let obj = list[i];
+    let div = dom("div", "", { class: "foto-info" });
+    let foto = img(obj.img);
+    let infos = info(obj);
 
-        const li = dom("li");
+    let div2 = interacao(obj);
 
-        let div = dom("div", "", {class: "foto-info"});
-        let foto = img(obj.img);
+    adotar(div, [foto, infos]);
+    adotar(li, [div, div2]);
 
-        let infos = info(obj);
-
-
-
-        adotar(div, [foto, infos]);
-        adotar(li, [div]);
-        ul.appendChild(li);
-    }
-
-
-    return ul;
+    return li;
 }
 
 export function img(imagem) {
     const figure = dom("figure");
-    return adotar(figure, [dom("img", "", { src: new URL(imagem, import.meta.url).href})]);
+    return adotar(figure, [dom("img", "", { src: new URL(imagem, import.meta.url).href })]);
 }
 
-function info(obj){//constroi a div com informações que fica ao lado da foto da ração
+function info(obj) {//constroi a div com informações que fica ao lado da foto da ração
 
-    const div = dom("div", "", {class: "info"});
+    const div = dom("div", "", { class: "info" });
 
     let marca = dom("p", obj.marca);
     let tipo = dom("p", obj.tipo);
     let peso = dom("p", obj.peso);
-    let preco = dom("p", `R$${formatCoins(obj.preco)}`, {class: "preco"});
+    let preco = dom("p", `R$${formatCoins(obj.preco)}`, { class: "preco" });
 
 
 
-    return adotar(div, [marca, tipo, peso, preco])
+    return adotar(div, [marca, tipo, peso, preco]);
+}
+
+function interacao(obj) {
+    const div = dom("div", "", { class: "interacao" });
+
+
+    let menos = dom("button", "-");
+    let p = dom("p", obj.quantidade);
+    let mais = dom("button", "+");
+
+
+    maisMenos(mais, menos, p, obj);
+
+    return adotar(div, [menos, p, mais]);
+}
+
+function maisMenos(mais, menos, p, obj) {//soma, subtração e atualização da quantidade de cada produto na tela
+    mais.addEventListener("click", () => {
+        obj.quantidade++;
+        p.innerText = obj.quantidade;
+        save();
+    })
+
+    menos.addEventListener("click", () => {
+        if (obj.quantidade > 0) {
+            obj.quantidade--;
+            p.innerText = obj.quantidade;
+        }
+        save();
+    })
+
 
 }
