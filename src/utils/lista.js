@@ -1,4 +1,5 @@
 import { save } from "../models/racoes.js";
+import { attPreco } from "../pages/inferior.js";
 import { adotar, dom } from "./adotar.js";
 import { formatCoins } from "./utils.js";
 
@@ -57,6 +58,7 @@ function maisMenos(mais, menos, p, obj) {//soma, subtração e atualização da 
         obj.quantidade++;
         p.innerText = obj.quantidade;
         save();
+        attPreco();
     })
 
     menos.addEventListener("click", () => {
@@ -65,6 +67,7 @@ function maisMenos(mais, menos, p, obj) {//soma, subtração e atualização da 
             p.innerText = obj.quantidade;
         }
         save();
+        attPreco();
     })
 
 

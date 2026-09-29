@@ -164,47 +164,41 @@ const racaoGatoPadrao = [{
 },
 ];
 
-
-export let racaoCachorro = [];
-export let racaoGato = [];
-
 let rc = "racaoCachorro"
 let rg = "racaoGato"
 
 
-load();
-
-export function load() {
-
-    let racaoC = JSON.parse(localStorage.getItem(rc));
-    let racaoG = JSON.parse(localStorage.getItem(rg));
+export let racaoCachorro = loadRacao(rc, racaoCachorroPadrao);
+export let racaoGato = loadRacao(rg, racaoGatoPadrao);
 
 
+export function loadRacao(nome, padrao) {
+
+    let racaoC = JSON.parse(localStorage.getItem(nome));
+
+    let define = null;
 
     try {
         if (racaoC.length) {
-            racaoCachorro = racaoC;
+            define = racaoC;
         }
-
-        if (racaoG.length) {
-            racaoGato = racaoG
-        }
-
     }catch{
         racaoC = [];
-        racaoG = [];
     }
 
-
-
-    if (racaoC.length < racaoCachorroPadrao.length) {
-        racaoCachorro = racaoCachorroPadrao;
+    if (racaoC.length < padrao.length) {
+        define = padrao;
     }
 
-    if (racaoG.length < racaoGatoPadrao.length) {
-        racaoGato = racaoGatoPadrao;
-    }
+    return define;
 }
+
+
+
+
+
+
+
 
 
 export function save() {
@@ -212,3 +206,7 @@ export function save() {
     localStorage.setItem(rc, JSON.stringify(racaoCachorro));
     localStorage.setItem(rg, JSON.stringify(racaoGato));
 }
+
+
+
+

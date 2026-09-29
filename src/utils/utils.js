@@ -1,13 +1,13 @@
-export function esconde(lista){
+export function esconde(lista) {
 
-    for(let i=0;i<lista.length;i++){
+    for (let i = 0; i < lista.length; i++) {
         lista[i].style.display = "none";
     }
 }
 
-export function mostra(lista){
+export function mostra(lista) {
 
-    for(let i=0;i<lista.length;i++){
+    for (let i = 0; i < lista.length; i++) {
         lista[i].style.display = "block";
     }
 }
@@ -15,34 +15,44 @@ export function mostra(lista){
 
 
 
-export function formatCoins(coin){
 
-    if(Number.isInteger(coin)){
+export function formatCoins(coin) {
+
+    if (Number.isInteger(coin)) {
         return `${coin},00`;
     }
 
-    let str = coin.toString();
-    str = str.split("");
+    let inteiro = Math.floor(coin);
 
-   for(let i=0;i<str.length;i++){
+    return `${inteiro},${nDepoisVirgula(coin)}`;
+}
 
-    let v = null;
-    if(str[i] != "." && !v){
-        str.splice(i, 1);
-    }else{
-        v = true;
+
+
+function nDepoisVirgula(coin) {
+
+
+    let string = `${coin}`;
+
+    let depois_da_virgula = false;
+
+    let digitos = [];
+
+    for (let i = 0; i < string.length; i++) {
+        if (depois_da_virgula) {
+            digitos.push(string[i]);
+        }
+
+        if (string[i] == ".") {
+            depois_da_virgula = true;
+        }
     }
-   }
 
-   coin = coin.toString();
-   coin = coin.replace(".", ",");
-   
-   if(str.length == 3){
-    return `${coin}`;
-   }
-   if(str.length == 2){
-    return `${coin}0`
-   }
+    if (digitos.length == 1) {
+        return `${digitos[0]}0`;
+    }
 
-
+    if (digitos.length == 2) {
+        return `${digitos[0]}${digitos[1]}`;
+    }
 }
