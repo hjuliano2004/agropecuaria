@@ -204,7 +204,3 @@ export function save() {
     localStorage.setItem(rc, JSON.stringify(racaoCachorro));
     localStorage.setItem(rg, JSON.stringify(racaoGato));
 }
-
-
-
-

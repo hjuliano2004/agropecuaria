@@ -5,6 +5,7 @@ import { itemLista } from "../utils/lista.js";
 import { btn_retorno } from "../utils/Retorno.js";
 import { navigate } from "../utils/Router.js";
 import { btn_carrinho } from "./carrinho.js";
+import { setInferior } from "./inferior.js";
 
 export let cardCaes = document.getElementById("caes");
 
@@ -20,6 +21,7 @@ export function caes(){
 
     adotar(display, [modulo(racaoCachorro)]);
     
+    setInferior();
 }
 
 
