@@ -27,12 +27,9 @@ export function attPreco(){
     let v = 0;
 
     for(let i=0;i<carrinhoList.length;i++){
-        v += carrinhoList[i].preco;
-
-        console.log(carrinhoList[i].preco);
+        v += carrinhoList[i].preco * carrinhoList[i].quantidade;
     }
 
-    console.log(`\n\n\n${v}`);
 
-    preco.innerText = `$${formatCoins(5.5)}`;
+    preco.innerText = `$${formatCoins(v)}`;
 }

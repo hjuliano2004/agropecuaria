@@ -43,6 +43,10 @@ function nDepoisVirgula(coin) {
             digitos.push(string[i]);
         }
 
+        if (digitos.length == 2) {
+            return `${digitos[0]}${digitos[1]}`;
+        }
+
         if (string[i] == ".") {
             depois_da_virgula = true;
         }
@@ -52,7 +56,5 @@ function nDepoisVirgula(coin) {
         return `${digitos[0]}0`;
     }
 
-    if (digitos.length == 2) {
-        return `${digitos[0]}${digitos[1]}`;
-    }
+
 }
