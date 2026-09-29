@@ -180,20 +180,28 @@ export function load() {
     let racaoG = JSON.parse(localStorage.getItem(rg));
 
 
-    if (racaoC.length) {
-        racaoCachorro = racaoC;
+
+    try {
+        if (racaoC.length) {
+            racaoCachorro = racaoC;
+        }
+
+        if (racaoG.length) {
+            racaoGato = racaoG
+        }
+
+    }catch{
+        racaoC = [];
+        racaoG = [];
     }
 
-    if(racaoG.length){
-        racaoGato = racaoG
-    }
 
 
-    if(racaoC.length < racaoCachorroPadrao.length){
+    if (racaoC.length < racaoCachorroPadrao.length) {
         racaoCachorro = racaoCachorroPadrao;
     }
 
-    if(racaoG.length < racaoGatoPadrao.length){
+    if (racaoG.length < racaoGatoPadrao.length) {
         racaoGato = racaoGatoPadrao;
     }
 }
