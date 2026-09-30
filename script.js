@@ -3,6 +3,7 @@ import { home, section_home } from "./src/pages/home.js"
 import { limpar } from "./src/utils/adotar.js";
 import { carrinho } from "./src/pages/carrinho.js";
 import { caes, cardCaes } from "./src/pages/caes.js";
+import { retirada } from "./src/pages/retirada.js";
  
 
 
@@ -21,6 +22,7 @@ const routes = {
     "/": () => showElements([home]),
     "/#carrinho": () => showElements([carrinho]),
     "/#caes": () => showElements([caes]),
+    "/#retirada": () => showElements([retirada]),
 };
 
 export const router = new Router(routes);

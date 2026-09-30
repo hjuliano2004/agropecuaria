@@ -9,9 +9,9 @@ export const divInferior = dom("div", "", {id: "cont-inferior"}, true);
 export const preco = dom("p", `R$${formatCoins(0)}`, {class: "preco", id: "preco_inferior"}, true);
 export const direita = dom("div", "", {class: "inferior_direito"}, true);
 
-export function setInferior(){
+export function setInferior(url){
 
-    let btn = Proximo("/#carrinho");
+    let btn = Proximo(url);
 
 
     adotar(divInferior, [preco, direita]);

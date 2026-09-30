@@ -1,20 +1,54 @@
-import { display, root, router } from "../../script.js";
+import { display, root, router, superior1, superior2, superior3 } from "../../script.js";
+import { carrinhoList } from "../models/Carrinho.js";
 import { dom, adotar } from "../utils/adotar.js";
+import { itemLista } from "../utils/lista.js";
+import { btn_retorno } from "../utils/Retorno.js";
 import { navigate } from "../utils/Router.js";
+import { setInferior } from "./inferior.js";
+
+function modulo() {
+
+    const section = dom("section", "", { id: "carrinho" });
+
+    let ul = dom("ul", "", {class: "lista"});
+
+    let cheio = false;
+
+    for(let i =0;i<carrinhoList.length;i++){
+        if(carrinhoList[i].quantidade){
+            ul.appendChild(itemLista(carrinhoList[i]));
+            cheio = true;
+        }
+    }
+
+    if(!cheio){
+        adotar(ul, [dom("spam", "Você ainda não escolheu nada.", {id: "carrinho-vazio"})]);
+    }
+
+
+    return adotar(section, [ul]);
+}
+
 
 export function carrinho() {
-    const section = dom("section", "carrinho", {id: "carrinho"});
 
-    adotar(display, [section]);
     root.style.display = "block";
+    adotar(superior1, [btn_retorno("/")]);
+    adotar(superior2, [dom("h3", "Carrinho")]);
+    //adotar(superior3, [dom("p", "endereço")]);//TODO: espaço util no canto superior direito
+
+    adotar(display, [modulo()]);
+    root.style.display = "block";
+
+    setInferior("/#retirada");
 }
 
 export function btn_carrinho() {
-        let btn = dom("button");
-        btn.setAttribute("id", "icone-carrinho");
+    let btn = dom("button");
+    btn.setAttribute("class", "icone-carrinho");
 
     btn.innerHTML = `
-        <svg class="retorno" xmlns="http://www.w3.org/2000/svg"
+        <svg xmlns="http://www.w3.org/2000/svg"
          fill="currentColor" class="bi bi-cart"
          viewBox="0 0 16 16">
       <path fill-rule="evenodd"

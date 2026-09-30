@@ -15,3 +15,12 @@ function loadCarrinho(lista = []) {//deve receber uma lista de arrays de ração
 
     return array;
 }
+
+
+export let retirada = null;
+
+export function setRetirada(set){
+    retirada = set;
+
+    console.log(retirada)
+}

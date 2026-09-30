@@ -21,7 +21,7 @@ export function caes(){
 
     adotar(display, [modulo(racaoCachorro)]);
     
-    setInferior();
+    setInferior("/#carrinho");
 }
 
 

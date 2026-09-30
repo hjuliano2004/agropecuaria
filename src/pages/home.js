@@ -5,7 +5,7 @@ import { numero } from "../utils/whatsapp.js";
 let anoAtual = document.getElementById("ano-atual");
 export let section_home = document.getElementById("home");
 export let contato = document.getElementById("contato");
-export let iconeCarrinho = document.getElementById("icone-carrinho");
+export let iconeCarrinho = document.getElementById("icone-carrinho-home");
 
     iconeCarrinho.addEventListener("click", ()=>{
         navigate(router, "/#carrinho")
