@@ -40,7 +40,17 @@ export function carrinho() {
     adotar(display, [modulo()]);
     root.style.display = "block";
 
-    setInferior("/#retirada");
+    setInferior(()=>{
+
+        for(let i =0;i<carrinhoList.length;i++){
+            if(carrinhoList[i].quantidade){
+                navigate(router, "/#retirada");
+                return null;
+            }
+        }
+
+        alert("Você ainda não escolheu nada.");
+    });
 }
 
 export function btn_carrinho() {

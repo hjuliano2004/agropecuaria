@@ -15,7 +15,7 @@ function opcoes() {
 
     const input = dom("input", "", { type: "text", placeholder: "seu nome", value: cliente });
     const label2 = dom("label", "Observações: ", {for: "observacoes"})
-    const input2 = dom("input", "", {type: "text", placeholder: "comente sobre o pedido",id: "observacoes", value: comentario})
+    const input2 = dom("input", "", {type: "text", placeholder: "comente sobre o pedido(não obrigatório)",id: "observacoes", value: comentario})
 
     input.addEventListener("input", () => {
         saveCliente(input.value);

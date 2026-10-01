@@ -20,10 +20,16 @@ export function itemLista(obj) {//gera a lista de ração
     return li;
 }
 
+
+
+
 export function img(imagem) {
     const figure = dom("figure");
     return adotar(figure, [dom("img", "", { src: new URL(imagem, import.meta.url).href })]);
 }
+
+
+
 
 function info(obj) {//constroi a div com informações que fica ao lado da foto da ração
 
@@ -34,19 +40,15 @@ function info(obj) {//constroi a div com informações que fica ao lado da foto 
     let peso = dom("p", obj.peso);
     let preco = dom("p", `R$${formatCoins(obj.preco)}`, { class: "preco" });
 
-
-
     return adotar(div, [marca, tipo, peso, preco]);
 }
 
 function interacao(obj) {
     const div = dom("div", "", { class: "interacao" });
 
-
     let menos = dom("button", "-");
     let p = dom("p", obj.quantidade);
     let mais = dom("button", "+");
-
 
     maisMenos(mais, menos, p, obj);
 
@@ -69,6 +71,4 @@ function maisMenos(mais, menos, p, obj) {//soma, subtração e atualização da 
         save();
         attPreco();
     })
-
-
 }
