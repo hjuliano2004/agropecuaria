@@ -1,5 +1,5 @@
 import { router } from "../../script.js";
-import { setRetirada } from "../models/Carrinho.js";
+import { carrinhoList, setRetirada } from "../models/Carrinho.js";
 import { cliente, comentario, saveCliente, saveComentario } from "../models/cliente.js";
 import { save } from "../models/racoes.js";
 import { adotar, dom } from "../utils/adotar.js";
@@ -79,6 +79,21 @@ function cards(titulo, mensagem, acressimo = 0) {
 }
 
 export function retirada() {
-    root.innerText = "";
+
+    let vazio = true;
+
+    for(let i=0;i<carrinhoList.length;i++){
+        if(carrinhoList[i]){
+            if(carrinhoList[i].quantidade > 0){
+                vazio = false;
+            }
+        }
+    }
+
+    if(vazio){
+        navigate(router, "/#carrinho");
+        return null;
+    }
+
     adotar(root, [ opcoes()]);
 }

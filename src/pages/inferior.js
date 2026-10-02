@@ -23,6 +23,12 @@ export function setInferior(callback){
     return btn;
 }
 
+export function setInferior2(objDom){
+
+    divInferior.innerHTML = "";
+    adotar(inferior, [objDom]);
+}
+
 
 export function attPreco(){
 

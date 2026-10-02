@@ -357,3 +357,68 @@ main {
 #nome-usuario label {
   font-size: large;
 }
+
+
+
+
+/*-------------------------------------*/
+
+
+#formulario-endereco {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding-top: 5%;
+}
+
+#formulario-endereco form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.lacuna {
+  display: flex;
+  flex-direction: column;
+}
+
+.lacuna label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #555;
+}
+
+.lacuna input,
+.lacuna select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.2s ease;
+}
+
+.lacuna input:focus,
+.lacuna select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+#formulario-endereco button {
+  margin-top: 10px;
+  padding: 12px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#formulario-endereco button:hover {
+  background: #0056b3;
+}
+
+/*-----------------------------------------------------------*/

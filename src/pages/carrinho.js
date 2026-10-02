@@ -38,7 +38,8 @@ export function carrinho() {
     //adotar(superior3, [dom("p", "endereço")]);//TODO: espaço util no canto superior direito
 
     adotar(display, [modulo()]);
-    root.style.display = "block";
+    
+    console.log(root.style.display)
 
     setInferior(()=>{
 

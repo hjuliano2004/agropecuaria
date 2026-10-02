@@ -4,6 +4,7 @@ import { limpar } from "./src/utils/adotar.js";
 import { carrinho } from "./src/pages/carrinho.js";
 import { caes, cardCaes } from "./src/pages/caes.js";
 import { retirada } from "./src/pages/retirada.js";
+import { renderformEndereco } from "./src/pages/Endereco.js";
  
 
 
@@ -23,6 +24,7 @@ const routes = {
     "/#carrinho": () => showElements([carrinho]),
     "/#caes": () => showElements([caes]),
     "/#retirada": () => showElements([retirada]),
+    "/#endereco": () => showElements([renderformEndereco]),
 };
 
 export const router = new Router(routes);
