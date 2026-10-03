@@ -1,8 +1,9 @@
-import { router } from "../../script.js";
+import { root, router, superior1, superior2 } from "../../script.js";
 import { carrinhoList, setRetirada } from "../models/Carrinho.js";
 import { cliente, comentario, saveCliente, saveComentario } from "../models/cliente.js";
 import { save } from "../models/racoes.js";
 import { adotar, dom } from "../utils/adotar.js";
+import { btn_retorno } from "../utils/Retorno.js";
 import { navigate } from "../utils/Router.js";
 import { formatCoins } from "../utils/utils.js";
 
@@ -79,6 +80,10 @@ function cards(titulo, mensagem, acressimo = 0) {
 }
 
 export function retirada() {
+
+    root.style.display = "block";
+    adotar(superior1, [btn_retorno("/#carrinho")]);
+    adotar(superior2, [dom("h3", "Método de retirada")]);
 
     let vazio = true;
 

@@ -15,13 +15,12 @@ export function geraBairros(){
 }
 
 export function bairroExiste(bairro){
-    let response = false;
 
     for(let i=0;i<bairros.length;i++){
         if(bairro == bairros[i]){
-            response = true;
+            return true;
         }
     }
 
-    return response;
+    return false;
 }

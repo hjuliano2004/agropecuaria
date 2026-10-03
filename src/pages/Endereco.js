@@ -1,9 +1,10 @@
-import { display, root, superior1, superior2 } from "../../script.js";
-import { endereco } from "../models/endereco.js";
+import { display, root, router, superior1, superior2 } from "../../script.js";
+import { endereco, salveEndereco } from "../models/endereco.js";
 import { adotar, dom } from "../utils/adotar.js";
-import { geraBairros } from "../utils/bairros.js";
+import { bairroExiste, geraBairros } from "../utils/bairros.js";
+import { requisicoes } from "../utils/requisicoes.js";
 import { btn_retorno } from "../utils/Retorno.js";
-import { setInferior2 } from "./inferior.js";
+import { navigate } from "../utils/Router.js";
 
 export function formulario() {
     // Cria elementos principais
@@ -11,8 +12,6 @@ export function formulario() {
 
     const form = dom("form");
     const confirm = dom("button", "Confirmar", { type: "submit" });
-
-    setInferior2(confirm);
 
     // Campos do formulário
     const rua = dom("input", "", { type: "text", name: "rua", placeholder: "Rua", value: endereco.rua, required: true });
@@ -43,7 +42,7 @@ export function formulario() {
     autoSave(numero);
     autoSave(complemento);
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         if (!bairro.value) {
@@ -53,10 +52,12 @@ export function formulario() {
             bairro.style.border = "";
         }
 
-        if (!validaBairro(cep, bairro, rua)) { return null }
+        if (!(await validaBairro(cep, bairro, rua))) {
+            window.alert("o CEP não percente ao endereço.......");
+            return null;
+         }
 
         navigate(router, "/#pagamento");
-
 
     });
 
@@ -86,7 +87,7 @@ export function formulario() {
     ])
 
 
-    adotar(section, [form]);
+    adotar(section, [form, confirm]);
     
 
     // Retorna a section pronta
@@ -96,7 +97,7 @@ export function formulario() {
 export function renderformEndereco() {
 
     adotar(superior1, [btn_retorno("/#retirada")]);
-    superior2.innerText = "Endereço";
+    adotar(superior2, [dom("h3", "Endereço")]);
   
     adotar(display, [formulario()]);
 
@@ -108,23 +109,26 @@ async function validaBairro(cep, bairro, rua) {
 
     let cepString = limpaTraco(`${cep.value}`);
 
-    if (cepString.length < 8 || cepString.length > 8) {
+    if (cepString.length != 8) {
 
         cep.style.border = "1px solid red";
 
-        return null
+        return false;
     } else {
         cep.style.border = "";
     }
 
     let request = await requisicoes(`https://viacep.com.br/ws/${cepString}/json/`);
 
-    if (request.bairro != bairro.value || request.logradouro != rua.value) {
-        window.alert("o CEP não percente ao endereço");
+    if (!request || request.erro || request.bairro !== bairro.value || request.logradouro !== rua.value) {
         cep.style.border = "1px solid red";
+
+        return false;
     } else {
         cep.style.border = "";
     }
+
+    return true;
 
 }
 
@@ -137,16 +141,16 @@ async function porCep(rua, bairro, cep) {
 
     let request = await requisicoes(`https://viacep.com.br/ws/${cepString}/json/`);
 
-    try {
+
         if (bairroExiste(request.bairro)) {
             bairro.value = request.bairro;
             rua.value = request.logradouro;
             salveEndereco(rua.value, bairro.value, cep.value);
+        }else{
+            window.alert("bairro indisponivel");
         }
 
-    } catch (e) {
-        console.log("não foi possivel autocompletar, bairro indisponível : ");
-    }
+
 
 }
 
