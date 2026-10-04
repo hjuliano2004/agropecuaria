@@ -16,13 +16,28 @@ export let endereco = load();
         return endereco;
     }
 
-    export function salveEndereco(rua, bairro, cep, numero = 0, complemento){
+    export function salveEndereco(rua, bairro, cep, numero = null, complemento = "") {
 
+        endereco.numero = numero;
+        endereco.complemento = complemento;
         endereco.rua = rua;
         endereco.bairro = bairro;
         endereco.cep = cep;
-        endereco.numero = numero
-        endereco.complemento = complemento
+
+        localStorage.setItem("endereco", JSON.stringify(endereco));
+    }
+
+    export function savePorCep(rua, bairro, cep) {
+        endereco.rua = rua;
+        endereco.bairro = bairro;
+        endereco.cep = cep;
+
+        localStorage.setItem("endereco", JSON.stringify(endereco));
+    }
+
+
+    export function saveBairro(bairro){
+        endereco.bairro = bairro;
 
         localStorage.setItem("endereco", JSON.stringify(endereco));
     }

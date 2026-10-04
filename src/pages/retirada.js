@@ -35,7 +35,7 @@ function opcoes() {
 
     card.addEventListener("click", () => {
 
-        if (input.value.trim().length < 2) {
+        if (!digitosMinimo(input.value)) {
             input.style.border = "1px solid red";
             return null;
         }
@@ -47,7 +47,7 @@ function opcoes() {
     })
 
     card2.addEventListener("click", () => {
-        if (input.value.trim().length.length < 2) {
+        if (!digitosMinimo(input.value)) {
             input.style.border = "1px solid red";
             return null;
         }
@@ -101,4 +101,30 @@ export function retirada() {
     }
 
     adotar(root, [ opcoes()]);
+}
+
+
+function digitosMinimo(string){
+    let minimo = 2;
+
+    let digitos = 0;
+
+    if(string.trim().length < minimo){
+        window.alert(`Digite pelo menos ${minimo} caracteres válidos`);
+        return false;
+    }
+
+
+    for(let i=0;i<string.length;i++){
+        if(string[i] != " "){
+            digitos++;
+        }
+    }
+
+    if(digitos < minimo){
+        window.alert(`Digite pelo menos ${minimo} caracteres válidos`);
+        return false;
+    }
+
+    return true;
 }

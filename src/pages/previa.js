@@ -69,6 +69,7 @@ btnFechaPrev.addEventListener("click", () => {
   sectionPrevia.style.display = "none";
 });
 
+/*
 // Funções de renderização
 export function renderPrevia() {
   root.appendChild(sectionPrevia);
@@ -79,3 +80,4 @@ export function removePrevia() {
     root.removeChild(sectionPrevia);
   }
 }
+*/

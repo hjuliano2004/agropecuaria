@@ -22,7 +22,7 @@ function modulo() {
     }
 
     if(!cheio){
-        adotar(ul, [dom("spam", "Você ainda não escolheu nada.", {id: "carrinho-vazio"})]);
+        adotar(ul, [dom("span", "Você ainda não escolheu nada.", {id: "carrinho-vazio"})]);
     }
 
 

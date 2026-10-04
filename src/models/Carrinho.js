@@ -17,10 +17,24 @@ function loadCarrinho(lista = []) {//deve receber uma lista de arrays de ração
 }
 
 
-export let retirada = null;
+export let metodo_retirada = loadRetirada();
 
 export function setRetirada(set){
-    retirada = set;
+    metodo_retirada = set;
 
-    console.log(retirada)
+    console.log(metodo_retirada);
+
+    localStorage.setItem("metodo_retirada", JSON.stringify(metodo_retirada));
+}
+
+function loadRetirada() {
+
+    let obj = localStorage.getItem("metodo_retirada");
+
+    if(!obj){
+        return null;
+    }
+
+    return JSON.parse(obj);
+
 }

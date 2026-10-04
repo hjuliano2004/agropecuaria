@@ -1,5 +1,5 @@
 import { display, router, superior1, superior2 } from "../../script.js";
-import { carrinhoList } from "../models/Carrinho.js";
+import { carrinhoList, metodo_retirada } from "../models/Carrinho.js";
 import { adotar, dom, domNs } from "../utils/adotar.js";
 import { img } from "../utils/lista.js";
 import { btn_retorno } from "../utils/Retorno.js";
@@ -7,6 +7,8 @@ import { navigate } from "../utils/Router.js";
 import { carrinho } from "./carrinho.js";
 import { confirmacao } from "./confirmacao.js";
 import { formas } from "./previa.js";
+
+export let metodo_pagamento = "";
 
 function metodos() {
     const section = dom("section", "", { id: "pagamento" });
@@ -67,7 +69,7 @@ function acao(li, mPagamento, ul) {
 
     li.addEventListener("click", () => {
 
-        carrinho.pagamento = mPagamento;
+        metodo_pagamento = mPagamento;
         confirmacao(mPagamento, ul);
 
     });
@@ -78,7 +80,16 @@ function acao(li, mPagamento, ul) {
 
 
 export function pagamento() {
-    vazio();
+
+    if(!vazio()){
+        navigate(router, "/#carrinho");
+        return null;
+    }
+
+    if(!metodo_retirada){
+        navigate(router, "/#retirada");
+        return null;
+    }
 
     adotar(superior1, [btn_retorno("/#retirada")]);
     adotar(superior2, [dom("h3", "Forma de Pagamento")]);
@@ -94,7 +105,5 @@ export function vazio(){//evita carregar paginas onde o carrinho deve conter ao 
         }
     }
 
-    if(!cheio){
-        navigate(router, "/#carrinho");
-    }
+    return cheio;
 }

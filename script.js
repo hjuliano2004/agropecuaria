@@ -2,7 +2,7 @@ import { Router } from "./src/utils/Router.js"
 import { home, section_home } from "./src/pages/home.js"
 import { limpar } from "./src/utils/adotar.js";
 import { carrinho } from "./src/pages/carrinho.js";
-import { caes, cardCaes } from "./src/pages/caes.js";
+import { caes } from "./src/pages/caes.js";
 import { retirada } from "./src/pages/retirada.js";
 import { renderformEndereco } from "./src/pages/Endereco.js";
 import { pagamento } from "./src/pages/pagamento.js";
