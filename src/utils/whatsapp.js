@@ -5,8 +5,8 @@ import { cliente, comentario } from "../models/cliente.js";
 import { carrinhoList, metodo_retirada } from "../models/Carrinho.js";
 import { endereco } from "../models/endereco.js";
 
-//export const numero = "5547996595712";
-export const numero = "5547997779964";
+export const numero = "5547996595712";
+//export const numero = "5547997779964";
 
 function whatsapp(mensagem = null) {
 
@@ -29,32 +29,33 @@ function whatsapp(mensagem = null) {
 
 function mensagemBase() {
 
-    //console.clear();
+        if(!metodo_retirada){
+        console.log("metodo_retirada não definido");
+        return null;
+    }
 
     let msg = `
 Novo pedido
-
-Pizzas: ${"lista de pizzas"}
+Lista de rações: \n${itens()}
 
 ------------------------------------------------
 CLIENTE: ${cliente}
-Forma de retirada: ${"nada"}`
+Forma de retirada: ${metodo_retirada.metodo.toUpperCase()}`;
 
     return msg;
 }
 
-export function mensagem() {
+export function mensagem(metodo) {
     let msg = `
 ${mensagemBase()}
 ${entrega()}
-${total()}
-${pix()}
+${total(metodo)}
+${pix(metodo)}
     
-Observações: ${comentario}
-Resumo: ${carrinhoList.length}`;
+Observações: ${comentario}`;
 
 
-    //whatsapp(msg);
+    whatsapp(msg);
 
     return msg;
 }
@@ -81,22 +82,56 @@ Endereço:
     Complemento: ${endereco.complemento}`;
 }
 
-function total() {
+function calculaTotal() {//percorre carrinho list e soma o preço de cada item multiplicado pela quantidade
+    let total = 0;
+
+    for (let i = 0; i < carrinhoList.length; i++) {
+        total += carrinhoList[i].preco * carrinhoList[i].quantidade;
+    }
+
+    if (metodo_retirada) {
+        total += metodo_retirada.acressimo;//adicionando o acressimo do metodo de retirada caso seja entrega
+    }
+
+    return total;
+}
+
+function total(metodo) {
     let string = `
 ------------------------------------------------
-TOTAL: R$${formatCoins(5)}
-Forma de pagamento: ${"pagamento"}`;//TODO: implementar forma de pagamento no carrinho
+TOTAL: R$${formatCoins(calculaTotal())}
+Forma de pagamento: ${metodo}`;
 
     return string;
 }
 
-function pix() {
+function pix(metodo) {
 
-    let obj = { pagamento: "PIX" }; //TODO: implementar forma de pagamento no carrinho
-    if (obj.pagamento.toUpperCase() === "PIX") {
+    if (metodo.toUpperCase() === "PIX") {
         return `chave pix: ${chavePix}
-beneficiário: Papadelli Ltda`;
+beneficiário: Timbé Exemplo Agropecuária Ltda`;
     }
 
     return "";
 }
+
+function item(obj){//gera string descritiva de um item do carrinho
+return `
+Marca: ${obj.marca}
+Tipo: ${obj.tipo}
+Peso: ${obj.peso}
+Preço: R$${formatCoins(obj.preco)}
+Quantidade: ${obj.quantidade}
+Subtotal: R$${formatCoins(obj.preco * obj.quantidade)}`;    
+
+}
+
+function itens(){//gera string descritiva de todos os itens do carrinhoList
+    let string = "";
+    for(let i=0;i<carrinhoList.length;i++){
+        if(carrinhoList[i].quantidade > 0){
+            string += item(carrinhoList[i]) + "\n";
+        }
+    }
+    return string;
+}  

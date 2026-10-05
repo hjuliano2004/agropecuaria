@@ -1,14 +1,12 @@
 import { display, router, superior1, superior2 } from "../../script.js";
 import { carrinhoList, metodo_retirada } from "../models/Carrinho.js";
+import { endereco } from "../models/endereco.js";
 import { adotar, dom, domNs } from "../utils/adotar.js";
 import { img } from "../utils/lista.js";
 import { btn_retorno } from "../utils/Retorno.js";
 import { navigate } from "../utils/Router.js";
-import { carrinho } from "./carrinho.js";
 import { confirmacao } from "./confirmacao.js";
 import { formas } from "./previa.js";
-
-export let metodo_pagamento = "";
 
 function metodos() {
     const section = dom("section", "", { id: "pagamento" });
@@ -69,7 +67,6 @@ function acao(li, mPagamento, ul) {
 
     li.addEventListener("click", () => {
 
-        metodo_pagamento = mPagamento;
         confirmacao(mPagamento, ul);
 
     });
@@ -91,6 +88,11 @@ export function pagamento() {
         return null;
     }
 
+    if(!rotaEntrega()){
+        navigate(router, "/#retirada");
+        return null;
+    }
+
     adotar(superior1, [btn_retorno("/#retirada")]);
     adotar(superior2, [dom("h3", "Forma de Pagamento")]);
     adotar(display, [metodos()]);
@@ -106,4 +108,16 @@ export function vazio(){//evita carregar paginas onde o carrinho deve conter ao 
     }
 
     return cheio;
+}
+
+
+function rotaEntrega() {//impede pedido por entrega sem endereço definido
+
+    if(metodo_retirada.metodo.toUpperCase() === "ENTREGA"){
+        if(!endereco.rua || !endereco.numero || !endereco.bairro || !endereco.cep){
+            navigate(router, "/#retirada");
+            return null;
+        }
+    }
+    return true;
 }

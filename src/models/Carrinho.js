@@ -21,9 +21,7 @@ export let metodo_retirada = loadRetirada();
 
 export function setRetirada(set){
     metodo_retirada = set;
-
-    console.log(metodo_retirada);
-
+    
     localStorage.setItem("metodo_retirada", JSON.stringify(metodo_retirada));
 }
 
@@ -37,4 +35,13 @@ function loadRetirada() {
 
     return JSON.parse(obj);
 
+}
+
+
+export function zeraCarrinho() {
+    localStorage.removeItem("carrinho");
+
+    for (let i = 0; i < carrinhoList.length; i++) {
+        carrinhoList[i].quantidade = 0;
+    }
 }

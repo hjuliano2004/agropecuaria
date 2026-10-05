@@ -51,9 +51,20 @@ export function espera(espera){//essa função não funciona se houver mais de 1
     let hora = agora.getHours();
     let min = agora.getMinutes();
 
-    if((min + espera) > 60){
+    if((min + espera) >= 60){
         hora++;
         min = (min + espera) - 60;
+
+        if(hora >= 24){
+
+            if(hora > 24){
+                hora = hora - 24;
+            }else if(hora === 24){
+                hora = 0;
+            }
+            
+        }
+
         return `${mins(hora)}:${mins(min)}`;
     }
 
