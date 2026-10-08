@@ -1,6 +1,6 @@
-import { racaoCachorro, racaoGato } from "./racoes.js";
+import { racaoCachorro, racaoGato, racaoPesada } from "./racoes.js";
 
-export const carrinhoList = loadCarrinho([racaoCachorro, racaoGato]);
+export const carrinhoList = loadCarrinho([racaoCachorro, racaoGato, racaoPesada]);
 
 function loadCarrinho(lista = []) {//deve receber uma lista de arrays de ração
 

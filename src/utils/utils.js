@@ -1,3 +1,10 @@
+import { root, router, superior1, superior2, superior3 } from "../../script.js";
+import { btn_carrinho } from "../pages/carrinho.js";
+import { setInferior } from "../pages/inferior.js";
+import { adotar, dom } from "./adotar.js";
+import { btn_retorno } from "./Retorno.js";
+import { navigate } from "./Router.js";
+
 export function esconde(lista) {
 
     for (let i = 0; i < lista.length; i++) {
@@ -58,3 +65,23 @@ function nDepoisVirgula(coin) {
 
 
 }
+
+
+
+export function setupPaginas(titulo) {//setup das páginas de produtos
+    root.style.display = "block";
+    adotar(superior1, [btn_retorno("/")]);
+    adotar(superior2, [dom("h3", titulo)]);
+    adotar(superior3, [btn_carrinho()]);
+
+    setInferior(() => {
+        navigate(router, "/#carrinho");
+    });
+
+}
+
+/*
+
+
+
+*/

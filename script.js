@@ -6,9 +6,9 @@ import { caes } from "./src/pages/caes.js";
 import { retirada } from "./src/pages/retirada.js";
 import { renderformEndereco } from "./src/pages/Endereco.js";
 import { pagamento } from "./src/pages/pagamento.js";
+import { gatos } from "./src/pages/gatos.js";
+import { pesada } from "./src/pages/pesada.js";
  
-
-
 export const root = document.getElementById("root");
 export const superior = document.getElementById("superior");
 export const display = document.getElementById("display");
@@ -26,7 +26,9 @@ const routes = {
     "/#caes": () => showElements([caes]),
     "/#retirada": () => showElements([retirada]),
     "/#endereco": () => showElements([renderformEndereco]),
-    "/#pagamento" : ()=> showElements([pagamento])
+    "/#pagamento" : ()=> showElements([pagamento]),
+    "/#gatos" : ()=> showElements([gatos]),
+    "/#pesada" : ()=> showElements([pesada])
 };
 
 export const router = new Router(routes);

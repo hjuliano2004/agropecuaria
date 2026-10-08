@@ -164,12 +164,41 @@ const racaoGatoPadrao = [{
 },
 ];
 
+const racaoPesadaPadrao = [
+    {
+        marca: "Exemplo",
+        tipo: "Equinos - Manutenção",
+        peso: "25kg",
+        preco: 89.90,
+        img: "../imagens/racaoCavalo.jpg",
+        quantidade: 0
+    },
+    {
+        marca: "Exemplo",
+        tipo: "Equinos - Potros",
+        peso: "25kg",
+        preco: 109.90,
+        img: "../imagens/racaoCavalo.jpg",
+        quantidade: 0
+    },
+    {
+        marca: "Exemplo",
+        tipo: "Equinos - Trabalho",
+        peso: "40kg",
+        preco: 139.90,
+        img: "../imagens/racaoCavalo.jpg",
+        quantidade: 0
+    }
+];
+
 let rc = "racaoCachorro"
 let rg = "racaoGato"
+let rp = "racaoPesada"
 
 
 export let racaoCachorro = loadRacao(rc, racaoCachorroPadrao);
 export let racaoGato = loadRacao(rg, racaoGatoPadrao);
+export let racaoPesada = loadRacao(rp, racaoPesadaPadrao);
 
 
 export function loadRacao(nome, padrao) {
@@ -205,8 +234,8 @@ export function save() {
 
     localStorage.setItem(rc, JSON.stringify(racaoCachorro));
     localStorage.setItem(rg, JSON.stringify(racaoGato));
+    localStorage.setItem(rp, JSON.stringify(racaoPesada));
 }
-
 
 
 
