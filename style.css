@@ -149,6 +149,15 @@ svg {
 
 .card-tipos-racao {
     cursor: pointer;
+    border: 1px dashed black;
+    border-radius: 5px;
+    border-top: 0px;
+    border-left: 0px;
+
+}
+
+.card-tipos-racao:active{
+    transform: scale(0.97);
 }
 
 #lista-destaques {
@@ -778,6 +787,8 @@ svg {
     gap: 2px;
     align-items: center;
     justify-content: center;
+    margin-bottom: 8px;
+    margin-top: 8px;
 }
 
 .int_destaque button {
