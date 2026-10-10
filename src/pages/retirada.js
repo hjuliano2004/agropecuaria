@@ -16,7 +16,7 @@ function opcoes() {
 
     const input = dom("input", "", { type: "text", placeholder: "seu nome", value: cliente });
     const label2 = dom("label", "Observações: ", {for: "observacoes"})
-    const input2 = dom("input", "", {type: "text", placeholder: "comente sobre o pedido(não obrigatório)",id: "observacoes", value: comentario})
+    const input2 = dom("input", "", {type: "text", placeholder: "Comente sobre o pedido(não obrigatório)",id: "observacoes", value: comentario})
 
     input.addEventListener("input", () => {
         saveCliente(input.value);
@@ -30,8 +30,8 @@ function opcoes() {
     const div2 = dom("div", "", { id: "retirada" })
 
 
-    const card = cards("Pessoalmente", "retirar pessoalmente");
-    const card2 = cards("Entrega", "entrega de encomenda", acressimo);
+    const card = cards("Pessoalmente", "Retirar pessoalmente");
+    const card2 = cards("Entrega", "Entrega de encomenda", acressimo);
 
     card.addEventListener("click", () => {
 
@@ -110,7 +110,7 @@ function digitosMinimo(string){
     let digitos = 0;
 
     if(string.trim().length < minimo){
-        window.alert(`Digite pelo menos ${minimo} caracteres válidos`);
+        window.alert(`Escreva seu nome, digite pelo menos ${minimo} caracteres válidos`);
         return false;
     }
 

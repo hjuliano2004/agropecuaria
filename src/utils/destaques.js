@@ -81,7 +81,7 @@ function spanDestaque() {
 
 function limpaPopUp(ctx) {
 
-    const tempo = 100;
+    const tempo = 50;//ajustar conforme a fluidez desejada
 
     clearInterval(loop)
     espera = 0
