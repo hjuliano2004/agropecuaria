@@ -6,8 +6,6 @@ import { requisicoes } from "../utils/requisicoes.js";
 import { btn_retorno } from "../utils/Retorno.js";
 import { navigate } from "../utils/Router.js";
 
-let cepInoperante = false;
-
 export function formulario() {
     // Cria elementos principais
     const section = dom("section", "", { id: "formulario-endereco" });
@@ -34,7 +32,7 @@ export function formulario() {
 
     let padrao = dom("option", "selecione o bairro", { value: "" });
 
-    
+
 
     cep.addEventListener("input", () => {
         porCep(rua, bairro, cep);
@@ -49,20 +47,13 @@ export function formulario() {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        if (!bairro.value) {
+        let bairroValidado = await validaBairro(cep, bairro, rua)
+
+        if (!bairro.value || !bairroValidado) {
             bairro.style.border = "1px solid red";
             return;
         } else {
             bairro.style.border = "";
-        }
-
-
-
-        if (!cepInoperante) {
-            if (!(await validaBairro(cep, bairro, rua))) {
-                window.alert("o CEP não percente ao endereço.......");
-                return null;
-            }
         }
 
         navigate(router, "/#pagamento");
