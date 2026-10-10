@@ -44,14 +44,18 @@ function info(obj) {//constroi a div com informações que fica ao lado da foto 
     return adotar(div, [marca, tipo, peso, preco]);
 }
 
-export function interacao(obj, classe) {
+export function interacao(obj, classe, callback = null) {
     const div = dom("div", "", { class: classe });
 
     let menos = dom("button", "-");
     let p = dom("p", obj.quantidade);
     let mais = dom("button", "+");
 
-    maisMenos(mais, menos, p, obj);
+    if(!callback){
+        maisMenos(mais, menos, p, obj)
+    }else{
+        callback(mais, menos, p, obj);
+    }
 
     return adotar(div, [menos, p, mais]);
 }
