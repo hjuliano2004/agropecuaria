@@ -52,7 +52,7 @@ ${entrega()}
 ${total(metodo)}
 ${pix(metodo)}
     
-Observações: ${comentario}`;
+${observacao()}`;
 
 
     whatsapp(msg);
@@ -135,3 +135,16 @@ function itens(){//gera string descritiva de todos os itens do carrinhoList
     }
     return string;
 }  
+
+
+function observacao() {
+    if(comentario.length > 0){
+        return `Observações: ${comentario}`;
+    }
+
+
+
+    return "";
+
+
+}

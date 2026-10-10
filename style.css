@@ -625,7 +625,7 @@ svg {
     .lista {
         gap: 10px;
         padding: 68px 12px 24px;
-        
+
     }
 
     .lista-racao {
@@ -752,7 +752,7 @@ svg {
         max-width: 420px;
         max-height: calc(100vh - 32px);
         overflow-y: auto;
-        top: 50%;
+        top: 20%;
         transform: translate(-50%, -50%);
     }
 
@@ -771,6 +771,23 @@ svg {
         width: auto;
         min-width: 0;
     }
+}
+
+.int_destaque {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+}
+
+.int_destaque button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.2s ease;
+
 }
 
 @media (max-width: 380px) {

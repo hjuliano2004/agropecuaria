@@ -1,5 +1,5 @@
 import { adotar, dom } from "./adotar.js";
-import { img } from "./lista.js";
+import { img, interacao } from "./lista.js";
 import { formatCoins } from "./utils.js";
 
 export function cardDestaques(racao){
@@ -7,7 +7,6 @@ export function cardDestaques(racao){
     if(!racao){
 
         return dom("p", "404 - item não encontrado", {class: "item-destaque erro"})
-
     }
 
     const li = dom("li", "", {class: "item-destaque"});
@@ -20,10 +19,9 @@ export function cardDestaques(racao){
     let peso = dom("p", racao.peso, {class: "peso"});
     let preco = dom("p",`R$${formatCoins(racao.preco)}` ,{class: "preco-produto preco"})
 
-     
+    let divInteracao = interacao(racao, "int_destaque");
 
-
-    return adotar(li, [image, nome, peso, preco]);
+    return adotar(li, [image, nome, peso, preco, divInteracao]);
 }
 
 
