@@ -79,7 +79,7 @@ const racaoCachorroPadrao = [
         sabor: "Carne e Arroz",
         peso: "20kg",
         preco: 115,
-        img: "../imagens/racao/Bocão-Premium-Cães-Adultos.png",
+        img: "../imagens/racao/Bocão-Premium-Cães-Adultos.png",///webp
         quantidade: 0
     },
 
@@ -115,7 +115,7 @@ const racaoCachorroPadrao = [
         sabor: "Cordeiro e Arroz",
         peso: "10.1kg",
         preco: 115,
-        img: "../imagens/racao/Mockup-NE-Raças-pequenas.png",
+        img: "../imagens/racao/Mockup-NE-Raças-pequenas.png",//TODO:editar
         quantidade: 0
     },
 
@@ -144,30 +144,30 @@ const racaoCachorroPadrao = [
 
 
     {
-        marca: "Pet Palatto - Premium Especial",
+        marca: "Pet Palatto - Premium Especial...",
         tipo: "Cães - Tradicional",
         sabor: "Peru e arroz",
         peso: "7kg",
         preco: 50,
-        img: "../imagens/racao/petPalato-peruArroz.jpeg",
+        img: "../imagens/racao/petPalato-peruArroz.jpeg",//TODO:editar
         quantidade: 0
     },
     {
-        marca: "Pet Palatto - Premium Especial",
+        marca: "Pet Palatto - Premium Especial...",
         tipo: "Cães - Tradicional",
         sabor: "Peru e arroz",
         peso: "15kg",
         preco: 105,
-        img: "../imagens/racao/petPalato-peruArroz.jpeg",
+        img: "../imagens/racao/petPalato-peruArroz.jpeg",//TODO:editar
         quantidade: 0
     },
     {
-        marca: "Pet Palatto - Premium Especial",
+        marca: "Pet Palatto - Premium Especial...",
         tipo: "Cães - Tradicional",
         sabor: "Peru e arroz",
         peso: "25kg",
         preco: 165,
-        img: "../imagens/racao/petPalato-peruArroz.jpeg",
+        img: "../imagens/racao/petPalato-peruArroz.jpeg",//TODO:editar
         quantidade: 0
     },
 
@@ -202,12 +202,12 @@ const racaoCachorroPadrao = [
         quantidade: 0
     },
     {
-        marca: "Pet Palatto - Super Premium",
+        marca: "Pet Palatto - Super Premium...",
         tipo: "Cães - Raças pequenas - Sênior 7+",
         sabor: "Frango e arroz com beterraba",
         peso: "10.1kg",
         preco: 115,
-        img: "../imagens/racao/Pet Palatto Super Premium - Natural Essence Raças Pequenas Sênior.png",
+        img: "../imagens/racao/Pet Palatto Super Premium - Natural Essence Raças Pequenas Sênior.png",//TODO:editar
         quantidade: 0
     },
     {
@@ -227,34 +227,53 @@ const racaoCachorroPadrao = [
 
 
 const racaoGatoPadrao = [
+     {
+        marca: "Bocão Premium Signature",
+        tipo: "Gato adulto",
+        sabor: "Salmão e Frango",
+        peso: "7kg",
+        preco: 60,
+        img: "../imagens/racao/Bocão-Premium-Signature-Gatos-Adultos.png",
+        quantidade: 0
+    },
+    {
+        marca: "Bocão Premium",
+        tipo: "Gato adulto",
+        sabor: "Frango",
+        peso: "10.1kg",
+        preco: 85,
+        img: "../imagens/racao/Bocão-Premium--Gatos-Adultos.png",
+        quantidade: 0
+    },
+    {
+        marca: "Bocão Premium",
+        tipo: "Gato adulto",
+        sabor: "Frango",
+        peso: "20kg",
+        preco: 150,
+        img: "../imagens/racao/Bocão-Premium--Gatos-Adultos.png",
+        quantidade: 0
+    },
     
     {
         marca: "Bocão Premium",
         tipo: "Gato adulto - Castrado",
         sabor: "Frango",
-        peso: "10kg",
-        preco: 139.90,
+        peso: "10.1kg",
+        preco: 95,
         img: "../imagens/racao/Bocão-Premium- Gatos-Adultos-Castrados.png",
         quantidade: 0
     },
     {
         marca: "Bocão Premium",
-        tipo: "Gato adulto",
+        tipo: "Gato adulto - Castrado",
         sabor: "Frango",
-        peso: "10kg",
-        preco: 139.90,
-        img: "../imagens/racao/Bocão-Premium--Gatos-Adultos.png",
+        peso: "20kg",
+        preco: 150,
+        img: "../imagens/racao/Bocão-Premium- Gatos-Adultos-Castrados.png",
         quantidade: 0
     },
-    {
-        marca: "Bocão Premium Signature",
-        tipo: "Gato adulto",
-        sabor: "Salmão e Frango",
-        peso: "10kg",
-        preco: 139.90,
-        img: "../imagens/racao/Bocão-Premium-Signature-Gatos-Adultos.png",
-        quantidade: 0
-    },
+    
 
 ];
 
