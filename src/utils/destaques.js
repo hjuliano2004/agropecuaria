@@ -35,7 +35,7 @@ function callback(mais, menos, p, obj) {
         obj.quantidade++;
         p.innerText = obj.quantidade;
 
-        spanDestaque()
+        spanDestaque("Verificar o carrinho");
 
 
         save();
@@ -45,6 +45,8 @@ function callback(mais, menos, p, obj) {
         if (obj.quantidade > 0) {
             obj.quantidade--;
             p.innerText = obj.quantidade;
+
+            spanDestaque("Item removido do carrinho");
 
             save();
         }
@@ -56,12 +58,12 @@ let loop = null;
 const esperaPadrao = 5000
 let espera = esperaPadrao;
 
-function spanDestaque() {
+function spanDestaque(msg) {
 
     popUp.innerText = "";
 
     let span = dom("span");
-    let p = dom("p", "verificar o carrinho");
+    let p = dom("p", msg);
     let canvas = dom("canvas");
     let ctx = canvas.getContext("2d");
 
