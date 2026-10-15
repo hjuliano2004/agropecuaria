@@ -37,11 +37,12 @@ function info(obj) {//constroi a div com informações que fica ao lado da foto 
 
     let marca = dom("p", obj.marca);
     let tipo = dom("p", obj.tipo);
+    let sabor = dom("p", `Sabor: ${obj.sabor}`);
     let peso = dom("p", obj.peso);
     let preco = dom("p", `R$${formatCoins(obj.preco)}`, { class: "preco" });
     
 
-    return adotar(div, [marca, tipo, peso, preco]);
+    return adotar(div, [marca, tipo, sabor, peso, preco]);
 }
 
 export function interacao(obj, classe, callback = null) {
